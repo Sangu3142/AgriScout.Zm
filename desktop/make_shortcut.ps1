@@ -21,7 +21,7 @@ foreach ($folder in @($desktop, $repo)) {
     $lnk.Arguments = '"' + $gui + '"'
     $lnk.WorkingDirectory = $repo
     $lnk.IconLocation = "$icon,0"
-    $lnk.Description = "AgriScout robot controller"
+    $lnk.Description = "AgriScout.Zm robot controller"
     $lnk.WindowStyle = 3  # maximized
     $lnk.Save()
     Write-Output "created $lnkPath"

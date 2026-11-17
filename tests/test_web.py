@@ -34,7 +34,7 @@ def test_index_page(client):
     assert r.status_code == 200
     assert r.mimetype == "text/html"
     html = r.get_data(as_text=True)
-    assert "<title>AgriScout</title>" in html
+    assert "<title>AgriScout.Zm</title>" in html
     assert 'rel="manifest" href="/static/manifest.json"' in html
     assert 'src="/static/app.js"' in html
 
@@ -57,7 +57,7 @@ def png_size(data):
 
 def test_manifest(client):
     manifest = json.loads(client.get("/static/manifest.json").get_data(as_text=True))
-    assert manifest["name"] == "AgriScout"
+    assert manifest["name"] == "AgriScout.Zm"
     assert manifest["display"] == "standalone"
     assert manifest["start_url"] == "/"
     assert manifest["theme_color"].startswith("#")

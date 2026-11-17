@@ -74,7 +74,7 @@ def _accuracy_line(width: int, name: str, right: int, total: int) -> str:
 def format_report(result: dict, model_path: str, testset_dir: str) -> str:
     """The report as text: accuracy per class, confusion matrix, every wrong photo."""
     labels, matrix = result["labels"], result["matrix"]
-    lines = ["AgriScout model test",
+    lines = ["AgriScout.Zm model test",
              "model:   %s" % model_path,
              "classes: %s" % ", ".join(labels),
              "photos:  %s" % testset_dir,

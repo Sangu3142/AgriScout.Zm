@@ -39,7 +39,7 @@ BURST_COUNT = 10
 BURST_GAP_S = 0.3
 PREVIEW_WIDTH = 480
 STREAM_TIMEOUT_MS = 3000
-WINDOW = "AgriScout capture"
+WINDOW = "AgriScout.Zm capture"
 
 
 def photo_path(out_dir: str, cls: str, now: datetime.datetime) -> str:

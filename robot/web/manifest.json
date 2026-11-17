@@ -1,6 +1,6 @@
 {
-  "name": "AgriScout",
-  "short_name": "AgriScout",
+  "name": "AgriScout.Zm",
+  "short_name": "AgriScout.Zm",
   "description": "Crop-row scouting robot controller",
   "start_url": "/",
   "scope": "/",

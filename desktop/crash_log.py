@@ -43,7 +43,7 @@ def _box(message: str) -> None:
     _last_box = time.monotonic()
     MB_ICONERROR = 0x10
     try:
-        ctypes.windll.user32.MessageBoxW(None, message, "AgriScout error", MB_ICONERROR)
+        ctypes.windll.user32.MessageBoxW(None, message, "AgriScout.Zm error", MB_ICONERROR)
     except (AttributeError, OSError):
         pass  # not on Windows: the log is enough
 
@@ -53,7 +53,7 @@ def report(exc_type, exc_value, exc_tb, where: str = "main thread") -> None:
     text = "".join(traceback.format_exception(exc_type, exc_value, exc_tb))
     if _log:
         _log.write(f"\n=== {time.strftime('%Y-%m-%d %H:%M:%S')} error in {where} ===\n{text}")
-    _box(f"AgriScout hit an error:\n\n{exc_type.__name__}: {exc_value}\n\n"
+    _box(f"AgriScout.Zm hit an error:\n\n{exc_type.__name__}: {exc_value}\n\n"
          f"Details are saved in:\n{LOG_PATH}\n\nStart AgriScout.bat shows them in a console.")
 
 

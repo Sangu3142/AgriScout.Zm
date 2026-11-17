@@ -549,7 +549,7 @@ class ScanResultWindow(QWidget):
     def __init__(self, parent: QWidget, db_path: str = scout_config.DB_PATH,
                  exports_dir: str = scout_config.EXPORTS_DIR):
         super().__init__(parent, Qt.Window)  # own window, but closes with the main window
-        self.setWindowTitle("AgriScout - scan result")
+        self.setWindowTitle("AgriScout.Zm - scan result")
         self.db_path = db_path
         self.exports_dir = exports_dir
         # Photos are stored as "scans/x.jpg", relative to the folder of the database.
@@ -618,7 +618,7 @@ class ScanResultWindow(QWidget):
 class MainWindow(QMainWindow):
     def __init__(self, address: str):
         super().__init__()
-        self.setWindowTitle("AgriScout")
+        self.setWindowTitle("AgriScout.Zm")
         self.address = address
         self.config: dict = {}
 
