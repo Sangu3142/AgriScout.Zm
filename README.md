@@ -1,18 +1,18 @@
-# AgriScout — AI farm-scouting robot for smallholder farmers
+﻿# AgriScout.Zm — AI farm-scouting robot for smallholder farmers
 
 **An affordable, offline AI robot that helps Zambian farmers lose less produce, earn more and use less water.**
 
 **1st Prize — UNILUS Tech Expo & Innovation Challenge 2026** (School of Technology & Engineering, University of Lusaka)
 
 <p align="center">
-  <img src="docs/images/robot.jpg" alt="The AgriScout prototype: a tracked robot with a pan-tilt camera, ultrasonic sensor and Raspberry Pi" width="480">
+  <img src="docs/images/robot.jpg" alt="The AgriScout.Zm prototype: a tracked robot with a pan-tilt camera, ultrasonic sensor and Raspberry Pi" width="480">
 </p>
 
 > **Demo video:** [add your YouTube or Google Drive link here]
 
 ---
 
-## Why AgriScout?
+## Why AgriScout.Zm?
 
 Agriculture supports the livelihoods of more than 70% of Zambians, yet most smallholder farmers still:
 
@@ -20,7 +20,7 @@ Agriculture supports the livelihoods of more than 70% of Zambians, yet most smal
 - **find spoiled tomatoes and peppers only at the market**, when the buyer marks the price down;
 - **water by guesswork**, wasting water, fuel and labour, or losing crops in dry spells like the 2024 drought.
 
-Imported precision-farming tools are expensive and usually need internet. AgriScout is built from low-cost parts and works **completely offline**.
+Imported precision-farming tools are expensive and usually need internet. AgriScout.Zm is built from low-cost parts and works **completely offline**.
 
 ## What it does
 
@@ -97,8 +97,8 @@ tests/      Automated tests
 ### 1. Laptop (Windows)
 
 ```powershell
-git clone https://github.com/Sangu3142/agriscout.git
-cd agriscout
+git clone https://github.com/Sangu3142/AgriScout.Zm.git
+cd AgriScout.Zm
 python -m venv .venv
 .venv\Scripts\pip install -r requirements.txt
 ```
@@ -159,7 +159,7 @@ Computer Science students, University of Lusaka. With thanks to our lecturers Hu
 
 ## Licence
 
-Copyright © 2026 the AgriScout team. **All rights reserved.** You are welcome to read the code; please [contact us](#contact) for permission to use, copy or adapt it. See [LICENSE](LICENSE).
+Copyright © 2026 the AgriScout.Zm team. **All rights reserved.** You are welcome to read the code; please [contact us](#contact) for permission to use, copy or adapt it. See [LICENSE](LICENSE).
 
 ## Contact
 

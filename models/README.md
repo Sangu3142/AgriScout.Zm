@@ -1,6 +1,6 @@
-# models/
+﻿# models/
 
-The trained AgriScout model used by the app.
+The trained AgriScout.Zm model used by the app.
 
 - `plant_model.onnx`: MobileNetV2 image classifier (v6). Input 1 x 3 x 224 x 224 RGB with ImageNet
   mean/std normalisation (constants at the top of `scout/classifier.py`); output one score per class.
