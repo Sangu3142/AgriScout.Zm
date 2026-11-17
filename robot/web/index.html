@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <!-- viewport-fit=cover: use the whole screen on phones with a notch -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#2e7d32">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="AgriScout">
+  <title>AgriScout</title>
+  <link rel="manifest" href="/static/manifest.json">
+  <link rel="icon" href="/static/icon-192.png">
+  <link rel="apple-touch-icon" href="/static/icon-192.png">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header id="topbar">
+    <span id="conn" class="dot bad" title="connection"></span>
+    <span id="title">AgriScout</span>
+    <span id="mode-now">mode: --</span>
+  </header>
+
+  <main id="layout">
+    <section id="video-box">
+      <img id="video" alt="">
+      <div id="no-video">NO VIDEO</div>
+    </section>
+
+    <!-- Always on screen, never scrolls: status, warnings, drive pad with STOP, modes -->
+    <section id="pinned">
+      <div id="readout">
+        <span id="distance">-- cm</span>
+        <span id="line">L1 □ L2 □ R1 □ R2 □</span>
+      </div>
+      <div id="banner" hidden></div>
+      <div id="toast" hidden></div>
+      <div id="mode-msg" hidden></div>
+
+      <!-- Drive pad: hold a button to drive, let go to stop -->
+      <div id="pad">
+        <button class="drive" data-cmd="spin_left">Spin L</button>
+        <button class="drive" data-cmd="forward">Forward</button>
+        <button class="drive" data-cmd="spin_right">Spin R</button>
+        <button class="drive" data-cmd="left">Left</button>
+        <button id="stop">STOP</button>
+        <button class="drive" data-cmd="right">Right</button>
+        <span></span>
+        <button class="drive" data-cmd="back">Back</button>
+        <span></span>
+      </div>
+
+      <div id="modes">
+        <button class="mode" data-mode="manual">Manual</button>
+        <button class="mode" data-mode="line_follow">Line follow</button>
+        <button class="mode" data-mode="avoid">Avoid</button>
+      </div>
+
+      <!-- Hidden on wide screens, where More is always shown as its own column -->
+      <button id="more-toggle" aria-expanded="false">More ▾</button>
+    </section>
+
+    <!-- Less important controls. The ONLY part that scrolls. -->
+    <section id="more-panel">
+      <!-- The robot's DHT11, from /api/status (same wording as the desktop GUI) -->
+      <div id="climate" class="stale">Climate: --</div>
+      <!-- Soil probe on the Uno next to the robot (same wording as the desktop GUI) -->
+      <div id="soil" class="stale">Soil: --</div>
+
+      <label class="row">Speed <output id="speed-out">50</output>
+        <input id="speed" type="range" min="0" max="100" value="50">
+      </label>
+
+      <fieldset>
+        <legend>Camera</legend>
+        <label class="row">Pan (left ↔ right)
+          <input id="pan" type="range" min="0" max="180" value="90">
+        </label>
+        <label class="row">Tilt (down ↔ up)
+          <input id="tilt" type="range" min="45" max="180" value="90">
+        </label>
+        <button id="cam-centre">Centre</button>
+      </fieldset>
+
+      <fieldset>
+        <legend>Ultrasonic</legend>
+        <label class="row">Point (left ↔ right)
+          <input id="front" type="range" min="0" max="180" value="90">
+        </label>
+        <div class="two">
+          <button id="front-centre">Centre</button>
+          <button id="scan">Scan</button>
+        </div>
+        <div id="scan-bars"></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>LED / Beep</legend>
+        <div id="leds">
+          <button class="led" data-rgb="0,0,0">Off</button>
+          <button class="led" data-rgb="255,0,0">Red</button>
+          <button class="led" data-rgb="0,255,0">Green</button>
+          <button class="led" data-rgb="0,0,255">Blue</button>
+          <button class="led" data-rgb="255,255,255">White</button>
+          <button id="beep">Beep</button>
+        </div>
+      </fieldset>
+    </section>
+  </main>
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

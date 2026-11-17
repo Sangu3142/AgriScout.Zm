@@ -1,0 +1,14 @@
+{
+  "_about": "Scripted answers for StubClassifier (scout/classifier.py), used until a real model is in models/. Each batch gets a fixed top-3 of [condition_id, confidence]; the photo is ignored. Only the 4 model classes are allowed (MODEL_CLASSES). Each top-3 has one other-crop class, which the crop filter drops. 'default' is used for batches not listed and for scans without a QR code: low confidence on purpose, so it shows as 'Not sure'.",
+  "default": [["tomato_fresh", 0.45], ["pepper_fresh", 0.30], ["tomato_spoiled", 0.10]],
+  "plants": {
+    "T-01": [["tomato_fresh", 0.94], ["tomato_spoiled", 0.04], ["pepper_fresh", 0.02]],
+    "T-02": [["tomato_spoiled", 0.88], ["tomato_fresh", 0.09], ["pepper_spoiled", 0.03]],
+    "T-03": [["tomato_spoiled", 0.52], ["tomato_fresh", 0.41], ["pepper_spoiled", 0.07]],
+    "T-04": [["tomato_fresh", 0.81], ["tomato_spoiled", 0.15], ["pepper_fresh", 0.04]],
+    "P-01": [["pepper_fresh", 0.91], ["pepper_spoiled", 0.06], ["tomato_fresh", 0.03]],
+    "P-02": [["pepper_spoiled", 0.83], ["pepper_fresh", 0.12], ["tomato_spoiled", 0.05]],
+    "P-03": [["pepper_fresh", 0.47], ["pepper_spoiled", 0.44], ["tomato_fresh", 0.09]],
+    "P-04": [["pepper_spoiled", 0.76], ["pepper_fresh", 0.20], ["tomato_spoiled", 0.04]]
+  }
+}

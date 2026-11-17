@@ -1,0 +1,37 @@
+/* Shared by card.html and report.html (included inline: the pages stay single files, offline).
+   Dark theme, system fonts only, big enough to read on a projector. */
+:root { color-scheme: dark;  /* dark scrollbars and form controls */
+  --bg: #121315; --card: #1c1d20; --inner: #25272b; --line: #33353a;
+  --text: #ededee; --muted: #a3a6ad; --faint: #7d8088;
+  /* header bands (status), and the brighter tone used for bars and dots */
+  --good: #13692f;      --good-hi: #34c759;   --good-pill: #dcfce7;   --good-ink: #166534;
+  --check: #9a5b0b;     --check-hi: #ffa21f;  --check-pill: #fff1dc;  --check-ink: #c2410c;
+  --remove: #a3221c;    --remove-hi: #f25555; --remove-pill: #fee2e2; --remove-ink: #b91c1c;
+  --unsure: #4f545c;    --unsure-hi: #a3a6ad;
+  --noprod: #3b4f6b;    /* no tomato or pepper found: slate blue, not the grey of "Not sure" */
+  --none: #34373d;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--text);
+       font-family: system-ui, "Segoe UI", Roboto, Arial, sans-serif; font-size: 17px;
+       line-height: 1.45; }
+a { color: inherit; }
+svg { display: block; flex: none; }
+
+/* status colours, used by the card header and the report chips/tiles */
+.status-healthy   { --band: var(--good);   --hi: var(--good-hi);   --pill: var(--good-pill);   --ink: var(--good-ink); }
+.status-watch     { --band: var(--check);  --hi: var(--check-hi);  --pill: var(--check-pill);  --ink: var(--check-ink); }
+.status-action    { --band: var(--remove); --hi: var(--remove-hi); --pill: var(--remove-pill); --ink: var(--remove-ink); }
+.status-uncertain { --band: var(--unsure); --hi: var(--unsure-hi); --pill: #e5e7eb;            --ink: #374151; }
+.status-no_produce { --band: var(--noprod); --hi: var(--faint);  --pill: #e0e7ef;            --ink: #334155; }
+.status-none      { --band: var(--none);   --hi: var(--faint);     --pill: #e5e7eb;            --ink: #374151; }
+
+.chip { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
+        border-radius: 999px; font-size: 15px; font-weight: 600; white-space: nowrap; }
+.chip svg { width: 16px; height: 16px; }
+.status-chip { background: var(--band); color: #fff; }
+.demo-banner { display: flex; gap: 12px; align-items: flex-start; background: #fff4e0;
+               color: #b4460d; border-radius: 14px; padding: 14px 16px; font-size: 16px; }
+.demo-banner svg { margin-top: 2px; }
+.small { font-size: 14px; color: var(--muted); }

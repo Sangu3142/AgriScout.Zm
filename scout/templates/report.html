@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AgriScout field report</title>
+<style>
+{% include "_theme.css" %}
+  body { padding: 20px; }
+  .page { max-width: 1200px; margin: 0 auto; }
+  h1 { margin: 0 0 4px; font-size: 30px; }
+  .meta { color: var(--muted); margin-bottom: 18px; }
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px;
+           margin-bottom: 18px; }
+  .tile { background: var(--band); border-radius: 18px; padding: 16px 18px; color: #fff; }
+  .tile .count { font-size: 48px; font-weight: 700; line-height: 1; }
+  .tile .what { font-size: 18px; margin-top: 6px; opacity: .9; }
+  .demo-banner { margin-bottom: 20px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 16px; }
+  .batch { background: var(--card); border-radius: 18px; overflow: hidden; display: flex;
+           flex-direction: column; border-top: 6px solid var(--band); }
+  .thumb { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: var(--inner); }
+  .no-photo { display: flex; align-items: center; justify-content: center; color: var(--faint);
+              aspect-ratio: 4 / 3; background: var(--inner); }
+  .batch-body { padding: 12px 16px 16px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+  .batch-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .batch-id { font-size: 24px; font-weight: 700; white-space: nowrap; }
+  .title { font-size: 18px; font-weight: 600; }
+  .view { margin-top: auto; align-self: flex-start; padding: 8px 18px; border: 1px solid var(--line);
+          border-radius: 12px; text-decoration: none; font-weight: 600; }
+  .view:hover { border-color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="page">
+<h1>AgriScout field report</h1>
+<div class="meta">Generated {{ generated }} · {{ rows|length }} batches
+  {%- if models %} · model: {{ models|join(", ") }}{% endif %}</div>
+
+<div class="tiles">
+  {% for key in tiles %}
+  <div class="tile status-{{ key }}"><div class="count">{{ totals[key] }}</div><div class="what">{{ status_text[key] }}</div></div>
+  {% endfor %}
+</div>
+
+{% if stub_used %}
+<div class="demo-banner">{{ icons.flask }}<span><b>{{ stub_banner }}.</b> Stand-in demo — diagnoses come from a scripted stub, not a trained model. Results need verification with a real agronomist or extension officer.</span></div>
+{% endif %}
+
+<div class="grid">
+{% for row in rows %}
+{% set plant, scan = row.plant, row.scan %}
+<article class="batch status-{{ scan.status if scan else 'none' }}">
+  {% if scan %}
+  <a href="{{ image_base }}cards/{{ scan.id }}.html"><img class="thumb" src="{{ image_base }}{{ scan.image_path }}" alt="photo of {{ plant.id }}"></a>
+  {% else %}
+  <div class="no-photo">no photo yet</div>
+  {% endif %}
+  <div class="batch-body">
+    <div class="batch-head">
+      <span class="batch-id">{{ plant.id }}</span>
+      <span class="chip status-chip">{{ status_short[scan.status] if scan else status_short["none"] }}</span>
+    </div>
+    <div class="small">{{ row.crop_name }}{% if plant.row %} · row {{ plant.row }}{% endif %}{% if plant.label %} · {{ plant.label }}{% endif %}</div>
+    {% if scan %}
+    <div class="title">{{ row.title }}</div>
+    <div class="small">{{ scan.timestamp.replace("T", " ") }} · {{ row.scans }} scan{{ "" if row.scans == 1 else "s" }}</div>
+    {% if row.climate %}<div class="small climate">Climate at scan: {{ row.climate }}</div>{% endif %}
+    <a class="view" href="{{ image_base }}cards/{{ scan.id }}.html">View</a>
+    {% endif %}
+  </div>
+</article>
+{% endfor %}
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,5 @@
+background
+pepper_fresh
+pepper_spoiled
+tomato_fresh
+tomato_spoiled

@@ -1,0 +1,27 @@
+# AgriScout robot server, started at boot. Install: see CLAUDE.md ("Start at boot").
+# Copy to /etc/systemd/system/agriscout.service.
+#
+# Ordering: no graphical.target here. After= + WantedBy=graphical.target would be an ordering
+# cycle (a target is ordered after the units it wants). Yahboom's app is started by the desktop
+# session, not by systemd, so no After= could order us behind it anyway: robot_server.py --boot
+# waits for it and kills it itself. rc-local.service starts mjpg-streamer (we never touch it).
+
+[Unit]
+Description=AgriScout robot server (Flask on port 5000, owns the GPIO)
+After=network.target rc-local.service
+
+[Service]
+Type=simple
+User=pi
+WorkingDirectory=/home/pi/agriscout/robot
+# Without this, print() output reaches the journal late (Python buffers it when not on a terminal).
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /home/pi/agriscout/robot/robot_server.py --boot
+Restart=on-failure
+RestartSec=3
+# SIGTERM -> SystemExit in robot_server.py -> finally: stop motors + GPIO.cleanup()
+KillSignal=SIGTERM
+TimeoutStopSec=10
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,127 @@
+{
+  "_about": "Knowledge base: one entry per model class (fresh or spoiled produce, per crop). Loaded into data/agriscout.db at every start; an entry removed here is removed from the database too. Advice is written from the sources named in each entry (UC Davis Postharvest Research and Extension Center, FAO, USDA FSIS) and marked verified=1. Never write chemical names or doses here. type healthy = 'Good'; spoiled = type disease, severity high = 'Remove' (see scout/classifier.py status_for). 'storage' (one entry per crop) and 'storage_rules' are the storage ranges the result card compares the robot's DHT11 reading with (scout/storage.py); copied with their sources from docs/storage_ranges_sources.md. verified=0 = the source is named but its wording is not yet checked; verified_note says how and when it was checked. Climate is advice only: it never changes a scan's status or the robot's LED.",
+  "conditions": [
+    {
+      "id": "tomato_fresh",
+      "crop": "tomato",
+      "name": "Fresh tomato",
+      "type": "healthy",
+      "severity": "low",
+      "symptoms": "Firm fruit with even, glossy skin. No soft or sunken patches, no mould, no cracks and no dark spots.",
+      "what_to_do_now": "Keep it in the batch. Handle it gently and keep the crate in the shade, out of direct sun.",
+      "prevention": "Cool the fruit soon after harvest and keep it cool and humid. UC Davis recommends about 12.5-15 °C for mature-green fruit and 7-10 °C for firm-ripe fruit (only 3-5 days), at 90-95% relative humidity. Avoid long cold storage below 10 °C: it causes chilling injury (blotchy ripening, pitting, early softening and more rot). Pack gently in clean crates and do not overfill them.",
+      "when_to_get_help": "If many fruit in the batch start to soften, crack or show spots, scan the batch again and sort it. If losses keep rising, ask the camp extension officer.",
+      "source_name": "UC Davis Postharvest Research and Extension Center - Tomato produce facts; FAO - Small-Scale Postharvest Handling Practices",
+      "source_url": "https://postharvest.ucdavis.edu/produce-facts-sheets/tomato",
+      "verified": 1
+    },
+    {
+      "id": "tomato_spoiled",
+      "crop": "tomato",
+      "name": "Spoiled tomato",
+      "type": "disease",
+      "severity": "high",
+      "symptoms": "Soft, watery or sunken rotten patches; mould growth (grey, black or white fuzz); dark spots, cracks or wrinkled skin. Common post-harvest rots of tomato include grey mould, black mould, sour rot, hairy rot and bacterial soft rot.",
+      "what_to_do_now": "Remove from batch. Take this tomato out of the crate at once and do not sell or eat it: in soft, moist produce like tomatoes, mould can spread below the surface where you cannot see it. Check the fruit that touched it and move any soft ones out too. Wash your hands afterwards.",
+      "prevention": "Sort out damaged and diseased fruit before storage and sale. Handle gently: rough handling is the most common cause of post-harvest losses in developing countries. Avoid bruises and cuts, which let rot organisms in. Cool fruit soon after harvest and keep crates clean.",
+      "when_to_get_help": "If rot keeps appearing in many fruit, or the same spots show on fruit straight from the field, the problem may start in the field. Show samples to the camp extension officer.",
+      "source_name": "UC Davis Postharvest Research and Extension Center - Tomato; USDA FSIS - Molds on Food; FAO - Small-Scale Postharvest Handling Practices",
+      "source_url": "https://postharvest.ucdavis.edu/produce-facts-sheets/tomato",
+      "verified": 1
+    },
+    {
+      "id": "pepper_fresh",
+      "crop": "pepper",
+      "name": "Fresh green pepper",
+      "type": "healthy",
+      "severity": "low",
+      "symptoms": "Firm, glossy fruit with a fresh green stem. No soft patches, wrinkles, pits or mould.",
+      "what_to_do_now": "Keep it in the batch. Handle it gently, because peppers bruise easily, and keep the crate shaded and cool.",
+      "prevention": "Cool peppers soon after harvest and keep them cool and very humid. UC Davis gives about 7.5 °C and more than 95% relative humidity for a shelf life of 3-5 weeks. Warmer storage speeds water loss and shrivelling, while long storage near 5 °C causes chilling injury (pitting and decay). Mechanical injury is very common on peppers, so pack them gently in clean crates.",
+      "when_to_get_help": "If many peppers in the batch start to wrinkle, soften or show spots, scan the batch again and sort it. If losses keep rising, ask the camp extension officer.",
+      "source_name": "UC Davis Postharvest Research and Extension Center - Bell pepper produce facts; FAO - Small-Scale Postharvest Handling Practices",
+      "source_url": "https://postharvest.ucdavis.edu/produce-facts-sheets/bell-pepper",
+      "verified": 1
+    },
+    {
+      "id": "pepper_spoiled",
+      "crop": "pepper",
+      "name": "Spoiled green pepper",
+      "type": "disease",
+      "severity": "high",
+      "symptoms": "Soft or sunken patches, wrinkled or shrivelled skin from water loss, pitting, a discoloured seed cavity, grey fuzzy mould (grey mould) or watery, smelly bacterial soft rot.",
+      "what_to_do_now": "Remove from batch. Take this pepper out of the crate at once and do not sell it. Check the fruit around it for soft spots or mould and move those out too.",
+      "prevention": "Sort out damaged fruit before storage. Avoid cuts and bruises: grey mould and soft rot enter through wounds. If peppers are washed, use clean water. Keep them cool and humid so they do not shrivel.",
+      "when_to_get_help": "If rot or shrivelling keeps appearing in many peppers, or fruit arrives from the field already spotted, show samples to the camp extension officer.",
+      "source_name": "UC Davis Postharvest Research and Extension Center - Bell pepper; FAO - Small-Scale Postharvest Handling Practices",
+      "source_url": "https://postharvest.ucdavis.edu/produce-facts-sheets/bell-pepper",
+      "verified": 1
+    }
+  ],
+  "storage": [
+    {
+      "crop": "tomato",
+      "temp_min_c": 12.5,
+      "temp_max_c": 15,
+      "temp_target": "12.5-15 °C for mature-green fruit",
+      "temp_target_note": "Ripe (firm-ripe) fruit: 7-10 °C for 3-5 days only.",
+      "within_text": null,
+      "too_warm_text": null,
+      "hot_above_c": 25,
+      "hot_text": "Tomatoes ripening above 25 °C turn more yellow, less red, and softer.",
+      "cool_min_c": 10,
+      "cool_text": "Below the range for green (mature-green) fruit; fine for ripe fruit for 3-5 days.",
+      "too_cold_text": "Chilling injury if kept below 10 °C for longer than 2 weeks, or at 5 °C for longer than 6-8 days.",
+      "rh_min_pct": 90,
+      "rh_max_pct": 95,
+      "rh_target": "90-95 %",
+      "source_name": "UC Davis Postharvest Technology Center - Tomato: Recommendations for Maintaining Postharvest Quality",
+      "source_url": "https://postharvest.ucdavis.edu/node/8181",
+      "verified": 1,
+      "verified_note": "checked by hand in a browser on 2026-10-05 (site blocks automated fetch)"
+    },
+    {
+      "crop": "pepper",
+      "temp_min_c": 5,
+      "temp_max_c": 7.5,
+      "temp_target": "7.5 °C is best (3-5 weeks); 5-7.5 °C is OK for up to 2 weeks",
+      "temp_target_note": null,
+      "within_text": "OK for up to 2 weeks; 7.5 °C gives the longest shelf life (3-5 weeks).",
+      "too_warm_text": "Peppers stored above 7.5 °C lose more water and shrivel.",
+      "hot_above_c": null,
+      "hot_text": null,
+      "cool_min_c": null,
+      "cool_text": null,
+      "too_cold_text": "Too cold - chilling injury risk.",
+      "rh_min_pct": 95,
+      "rh_max_pct": null,
+      "rh_target": "more than 95 %",
+      "source_name": "UC Davis Postharvest Technology Center - Bell Pepper",
+      "source_url": "https://postharvest.ucdavis.edu/node/8026",
+      "verified": 1,
+      "verified_note": "checked by hand in a browser on 2026-10-05 (site blocks automated fetch)"
+    }
+  ],
+  "storage_rules": {
+    "q10": {
+      "low": 2,
+      "high": 3,
+      "source_name": "FAO Agricultural Services Bulletin 152 - The role of post-harvest management in assuring the quality and safety of horticultural produce, section 3.2",
+      "source_url": "https://www.fao.org/4/y5431e/y5431e04.htm",
+      "verified": 1,
+      "verified_note": "checked online (automated fetch of the FAO page) on 2026-10-05"
+    },
+    "actions": [
+      "Harvest early in the morning, while it is cool.",
+      "Keep crates in the shade with air moving around them, never in direct sun.",
+      "When the air is dry, cover the crates with a damp sack."
+    ],
+    "cool_chamber": {
+      "text": "Use an evaporative cooler or a zero-energy cool chamber. In a trial in Ethiopia (Amha et al. 2025) the chamber's mean maximum temperature was 5.7-6.8 °C lower than in room storage (measured while storing kale), it reached up to 85 % relative humidity (the room: at most about 40-45 %), and tomatoes kept longer: 16 to 24 days in Addis Ababa and 12 to 22 days in Woliso (room storage to cool chamber).",
+      "source_name": "Amha, B. et al. (2025), Enhancing the shelf life of kale and tomato using a zero-energy cooling chamber in Ethiopia, AJFAND 25(9)",
+      "source_url": "https://ajfand.net/Volume25/No9/Amha25545.pdf",
+      "verified": 1,
+      "verified_note": "checked by hand in a browser on 2026-10-05 (PDF not readable by automated fetch)"
+    }
+  }
+}

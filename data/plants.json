@@ -1,0 +1,13 @@
+{
+  "_about": "The demo batches (one QR stake per crate of produce). id = the text after 'AGRISCOUT:' on the QR stake. crop: tomato or pepper (green pepper). Loaded into data/agriscout.db at every start; edit here, not in the database. T-04 and P-04 are spare stakes.",
+  "plants": [
+    {"id": "T-01", "crop": "tomato", "row": "A", "label": "Tomato batch 1", "notes": ""},
+    {"id": "T-02", "crop": "tomato", "row": "A", "label": "Tomato batch 2", "notes": ""},
+    {"id": "T-03", "crop": "tomato", "row": "A", "label": "Tomato batch 3", "notes": ""},
+    {"id": "T-04", "crop": "tomato", "row": "A", "label": "spare", "notes": "spare stake"},
+    {"id": "P-01", "crop": "pepper", "row": "B", "label": "Pepper batch 1", "notes": ""},
+    {"id": "P-02", "crop": "pepper", "row": "B", "label": "Pepper batch 2", "notes": ""},
+    {"id": "P-03", "crop": "pepper", "row": "B", "label": "Pepper batch 3", "notes": ""},
+    {"id": "P-04", "crop": "pepper", "row": "B", "label": "spare", "notes": "spare stake"}
+  ]
+}

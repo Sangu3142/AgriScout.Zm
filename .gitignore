@@ -1,0 +1,52 @@
+# --- Python ---
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# --- Secrets and local settings (never commit these) ---
+.env
+*.env
+secrets*.py
+*_secret*
+*.pem
+*.key
+id_rsa*
+wpa_supplicant*.conf
+
+# --- Datasets (too large for GitHub; share a link instead) ---
+dataset/
+dataset_*/
+dataset.zip
+testset/
+testset_*/
+*.zip
+
+# --- Old and backup models (keep only the active models/plant_model.onnx) ---
+models/old_download/
+models/v*/
+
+# --- Evaluation outputs and logs ---
+eval_*.txt
+*.log
+
+# --- Third-party vendor code (not ours to publish) ---
+reference/
+
+# --- Editors and OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+
+# --- App-generated data (scan history, reports, exports) ---
+data/*.db
+data/report.html
+data/cards/
+data/exports/
+data/scans/
+data/stakes/
